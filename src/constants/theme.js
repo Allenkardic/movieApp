@@ -12,7 +12,7 @@ const screenHeight = width < height ? height : width;
 export const COLORS = {
   //base color
   lightprimary: '#4EBDEF',
-  primary: '#082E7C',
+  primary: '#ffffff',
   tertiary: '#FF7C00',
   success: '#219653',
   error: '#fe3b30',

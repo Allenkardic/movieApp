@@ -19,7 +19,7 @@ function PublicNavigation() {
         headerStatusBarHeight: 0,
         headerShown: true,
       }}
-      initialRouteName="Onboarding">
+      initialRouteName="Movies">
       <Stack.Group
         // screenOptions={{headerStyle: {backgroundColor: 'papayawhip'}}}>
         screenOptions={{headerStyle: {backgroundColor: 'blue'}}}>
@@ -41,7 +41,7 @@ function PublicNavigation() {
           name="MovieDetails"
           component={MovieDetails}
           options={{
-            header: props => <NavigationHeader />,
+            headerShown: false,
           }}
         />
       </Stack.Group>
