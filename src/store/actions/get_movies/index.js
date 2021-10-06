@@ -1,5 +1,4 @@
 import {showMessage} from 'react-native-flash-message';
-
 import {COLORS} from '../../../constants/theme';
 
 import axios from 'axios';
@@ -10,8 +9,6 @@ import {
   GET_MOVIES_FAIL,
   GET_MOVIES_CLEANUP,
 } from '../../actionTypes';
-
-import AxiosCall from '../../../utils/Axios';
 
 const getMoviesStart = () => {
   return {type: GET_MOVIES_START};
@@ -33,28 +30,22 @@ export const getMoviesRequest = () => {
   return async dispatch => {
     dispatch(getMoviesStart());
 
-    console.log('its here');
-
     axios
       .get(
         'http://api.themoviedb.org/3/discover/movie?api_key=7a9c16870865627516be344954933a0d&certification_country=US&certification.lte=G&sort_by=popularity.desc',
       )
       .then(function (response) {
-        // handle success
-
-        console.log(response, 'all');
-
+        // HANDLE SUCCESS
         dispatch(getMoviesSuccess(response.data));
-
-        // console.log(response)
       })
       .catch(function (error) {
-        console.log(error, 'my error');
-        // handle error
+        // HANDLE ERRORS
         dispatch(getMoviesFail(error.status_message));
-      })
-      .then(function () {
-        // always executed
+        showMessage({
+          message: error.status_message,
+          type: 'danger',
+          color: COLORS.white, // text color
+        });
       });
   };
 };

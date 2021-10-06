@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import {showMessage} from 'react-native-flash-message';
 
-export const baseURL = 'http://api.themoviedb.org/3/discover/movie';
+export const baseURL = 'http://api.themoviedb.org/3/';
 
 const AxiosCall = async (callObj, dispatch) => {
   const {path, method, data, contentType} = callObj;
