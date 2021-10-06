@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Platform,
+  FlatList,
 } from 'react-native';
 
 // COMPONENTS
@@ -34,12 +35,26 @@ function Movies(props) {
   // STATES
   const getMoviesState = useSelector(s => s.getMovies);
 
-  // const data = getMoviesState.result.results;
+  const [selectedId, setSelectedId] = React.useState(null);
+
+  const mydata = getMoviesState.result.results;
+  const myDd = getMoviesState;
+
+  // console.log(mydata[0].title, 'title');
+  // console.log(mydata[0].release_date, 'release date');
+  // console.log(mydata[0].vote_average, 'volt average');
+
+  React.useEffect(() => {
+    dispatch(getMoviesRequest());
+  }, []);
+
+  console.log(myDd, 'data');
 
   const imgSrc = 'https://image.tmdb.org/t/p/original/';
 
   const data = [
     {
+      id: 1,
       title: 'The end game',
       imgSrc:
         'https://image.tmdb.org/t/p/original//uIXF0sQGXOxQhbaEaKOi2VYlIL0.jpg',
@@ -47,6 +62,7 @@ function Movies(props) {
       vote_average: '22/2',
     },
     {
+      id: 2,
       title: 'End of God of war',
       imgSrc:
         'https://image.tmdb.org/t/p/original//uIXF0sQGXOxQhbaEaKOi2VYlIL0.jpg',
@@ -54,6 +70,7 @@ function Movies(props) {
       vote_average: '9/10',
     },
     {
+      id: 3,
       title: 'Beging of break',
       imgSrc:
         'https://image.tmdb.org/t/p/original//uIXF0sQGXOxQhbaEaKOi2VYlIL0.jpg',
@@ -61,6 +78,7 @@ function Movies(props) {
       vote_average: '3/10',
     },
     {
+      id: 4,
       title: 'Yes i do',
       imgSrc:
         'https://image.tmdb.org/t/p/original//uIXF0sQGXOxQhbaEaKOi2VYlIL0.jpg',
@@ -68,6 +86,7 @@ function Movies(props) {
       vote_average: '9/10',
     },
     {
+      id: 5,
       title: 'Coming home',
       imgSrc:
         'https://image.tmdb.org/t/p/original//uIXF0sQGXOxQhbaEaKOi2VYlIL0.jpg',
@@ -76,20 +95,83 @@ function Movies(props) {
     },
   ];
 
-  React.useEffect(() => {
-    dispatch(getMoviesRequest());
-  }, []);
+  function Item({item}) {
+    console.log(item, 'release data');
+    return (
+      <MovieCard
+        imgSrc={`${imgSrc}${item.poster_path}`}
+        // imgSrc={`${item.imgSrc}`}
+        onPress={() => props.navigation.navigate('MovieDetails')}>
+        <View style={{paddingHorizontal: SPACING.xxxsmall}}>
+          <View
+            style={{
+              ...styles.content,
+            }}>
+            <CustomText
+              style={{
+                width: wp('30%'),
+                lineHeight: Platform.OS == 'android' ? 15 : 0,
+              }}
+              xxsmall
+              bold
+              white>
+              {item.title}
+            </CustomText>
+            <CustomText xxsmall bold white>
+              {item.release_date}
+            </CustomText>
+          </View>
 
-  // if (getMoviesState.isLoading) {
-  //   return (
-  //     <View>
-  //       <CustomText>isLoading...</CustomText>
-  //     </View>
-  //   );
-  // } else {
-  return (
-    <>
-      <ScrollView style={{...styles.container}}>
+          <View
+            style={{
+              marginTop: SPACING.xsmall,
+              alignSelf: 'flex-end',
+            }}>
+            <CustomText xxsmall style={{color: COLORS.white}}>
+              {item.vote_average} /10
+            </CustomText>
+          </View>
+        </View>
+      </MovieCard>
+    );
+  }
+
+  console.log(getMoviesState.isLoading);
+  if (getMoviesState.isLoading) {
+    return (
+      <View>
+        <CustomText>isLoading...</CustomText>
+      </View>
+    );
+  } else {
+    return (
+      <>
+        <FlatList
+          // data={data}
+          data={mydata}
+          renderItem={Item}
+          keyExtractor={item => item.id}
+          extraData={selectedId}
+        />
+
+        <View>
+          <CustomText>kjwejkaejk</CustomText>
+          <CustomText>kjwejkaejk</CustomText>
+          <CustomText>kjwejkaejk</CustomText>
+          <CustomText>kjwejkaejk</CustomText>
+          <CustomText>kjwejkaejk</CustomText>
+          <CustomText>kjwejkaejk</CustomText>
+        </View>
+
+        {/* <View>
+        <CustomText>hdsfhjshdh</CustomText>
+        <CustomText>hdsfhjshdh</CustomText>
+        <CustomText>hdsfhjshdh</CustomText>
+        <CustomText>hdsfhjshdh</CustomText>
+        <CustomText>hdsfhjshdh</CustomText>
+        <CustomText>hdsfhjshdh</CustomText>
+      </View> */}
+        {/* <ScrollView style={{...styles.container}}>
         <View>
           <CustomText
             bold
@@ -154,10 +236,10 @@ function Movies(props) {
               })}
           </View>
         </View>
-      </ScrollView>
-    </>
-  );
-  // }
+      </ScrollView> */}
+      </>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

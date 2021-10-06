@@ -33,6 +33,8 @@ export const getMoviesRequest = () => {
   return async dispatch => {
     dispatch(getMoviesStart());
 
+    console.log('its here');
+
     axios
       .get(
         'http://api.themoviedb.org/3/discover/movie?api_key=7a9c16870865627516be344954933a0d&certification_country=US&certification.lte=G&sort_by=popularity.desc',
@@ -40,11 +42,14 @@ export const getMoviesRequest = () => {
       .then(function (response) {
         // handle success
 
+        console.log(response, 'all');
+
         dispatch(getMoviesSuccess(response.data));
 
         // console.log(response)
       })
       .catch(function (error) {
+        console.log(error, 'my error');
         // handle error
         dispatch(getMoviesFail(error.status_message));
       })
