@@ -3,11 +3,7 @@ import {View} from 'react-native';
 import Main from './src/navigations';
 
 function Entry() {
-  return (
-    // <View>
-    <Main />
-    // </View>
-  );
+  return <Main />;
 }
 
 export default Entry;
