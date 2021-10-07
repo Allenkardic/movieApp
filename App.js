@@ -15,15 +15,7 @@ import Entry from './entry';
 import {getStore, getPersistor} from './src/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 
 const App: () => Node = () => {
   const myStore = getStore();
@@ -31,6 +23,7 @@ const App: () => Node = () => {
   return (
     <Provider store={myStore}>
       <PersistGate persistor={myPersistor}>
+        <FlashMessage floating={true} position={'top'} hideOnPress={true} />
         <Entry />
       </PersistGate>
     </Provider>

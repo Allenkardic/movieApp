@@ -1,24 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Image,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Platform,
-  FlatList,
-} from 'react-native';
+import {View, StyleSheet, Platform, FlatList} from 'react-native';
 
 // COMPONENTS
 import CustomText from '../../components/CustomText';
-import {
-  FONTSIZE,
-  SPACING,
-  SIZES,
-  IMAGES,
-  COLORS,
-  BORDERRADIUS,
-} from '../../constants/theme';
+import {SPACING, COLORS} from '../../constants/theme';
 
 import MovieCard from '../../components/MovieCard';
 import FullScreenLoader from '../../components/FullScreenLoader';

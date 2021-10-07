@@ -85,9 +85,7 @@ function MovieDetails(props) {
           <View>
             <View
               style={{
-                width: '100%',
-                marginBottom: SPACING.xxsmall,
-                backgroundColor: COLORS.darkGray,
+                ...styles.cardConatiner,
               }}>
               <MovieCard
                 imgSrc={`${imgSrc}${poster_path}`}
@@ -96,11 +94,7 @@ function MovieDetails(props) {
                 <View style={{paddingHorizontal: SPACING.xxxsmall}}>
                   <View
                     style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      marginTop: SPACING.xxsmall,
-                      alignItems: 'baseline',
+                      ...styles.helperContainer,
                     }}>
                     <CustomText medium bold white>
                       {original_title}
@@ -118,9 +112,7 @@ function MovieDetails(props) {
 
                   <View
                     style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      marginTop: SPACING.xxsmall,
+                      ...styles.genreContainer,
                     }}>
                     {genres &&
                       genres.map((item, index) => {
@@ -141,13 +133,7 @@ function MovieDetails(props) {
 
                   <View
                     style={{
-                      marginTop: SPACING.xsmall,
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'baseline',
-
-                      // alignSelf: 'flex-end',
+                      ...styles.ratingContainer,
                     }}>
                     <Rating
                       type="custom"
@@ -158,16 +144,6 @@ function MovieDetails(props) {
                       }}
                       showRating={false}
                       ratingBackgroundColor={COLORS.black}
-                      // ratingColor="green"
-                      ratingContainerStyle={{
-                        backgroundColor: 'red',
-
-                        color: 'red',
-                      }}
-                      starContainerStyle={{
-                        backgroundColor: 'red',
-                        color: 'red',
-                      }}
                       ratingCount={5}
                       imageSize={hp('3%')}
                     />
@@ -193,14 +169,35 @@ const styles = StyleSheet.create({
   },
 
   cardConatiner: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: 'red',
+    width: '100%',
+    marginBottom: SPACING.xxsmall,
+    backgroundColor: COLORS.darkGray,
   },
 
   overViewText: {
     marginTop: SPACING.xxsmall,
     lineHeight: Platform.OS == 'android' ? 17 : 0,
+  },
+
+  helperContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: SPACING.xxsmall,
+    alignItems: 'baseline',
+  },
+
+  genreContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: SPACING.xxsmall,
+  },
+  ratingContainer: {
+    marginTop: SPACING.xsmall,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
   },
 });
 
