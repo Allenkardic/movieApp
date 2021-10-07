@@ -2,13 +2,9 @@ import React, {Component} from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-// COMPONENTS
-import NavigationHeader from '../components/NavigationHeader';
-
-// SCREENS
-import Onboarding from '../screens/Onboarding';
 import Movies from '../screens/Movies';
 import MovieDetails from '../screens/Movies/MovieDetails';
+import {COLORS} from '../constants/theme';
 
 const Stack = createNativeStackNavigator();
 function PublicNavigation() {
@@ -22,26 +18,29 @@ function PublicNavigation() {
       initialRouteName="Movies">
       <Stack.Group
         // screenOptions={{headerStyle: {backgroundColor: 'papayawhip'}}}>
-        screenOptions={{headerStyle: {backgroundColor: 'blue'}}}>
-        <Stack.Screen
-          name="Onboarding"
-          component={Onboarding}
-          options={{
-            headerShown: false,
-          }}
-        />
+        screenOptions={{headerStyle: {backgroundColor: COLORS.black}}}>
         <Stack.Screen
           name="Movies"
           component={Movies}
           options={{
-            headerShown: false,
+            headerShown: true,
+            title: 'Movies',
+            headerTintColor: COLORS.white,
+            headerStyle: {
+              backgroundColor: COLORS.black,
+            },
           }}
         />
         <Stack.Screen
           name="MovieDetails"
           component={MovieDetails}
           options={{
-            headerShown: false,
+            headerShown: true,
+            title: 'Movie Detail',
+            headerTintColor: COLORS.white,
+            headerStyle: {
+              backgroundColor: COLORS.black,
+            },
           }}
         />
       </Stack.Group>
