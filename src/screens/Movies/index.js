@@ -21,6 +21,7 @@ import {
 } from '../../constants/theme';
 
 import MovieCard from '../../components/MovieCard';
+import FullScreenLoader from '../../components/FullScreenLoader';
 
 import {
   widthPercentageToDP as wp,
@@ -52,10 +53,11 @@ function Movies(props) {
   const imgSrc = 'https://image.tmdb.org/t/p/original/';
 
   function Item({item}) {
+    const {id} = item;
     return (
       <MovieCard
         imgSrc={`${imgSrc}${item.poster_path}`}
-        onPress={() => props.navigation.navigate('MovieDetails')}
+        onPress={() => props.navigation.navigate('MovieDetails', {id})}
         imgMode={'cover'}>
         <View style={{paddingHorizontal: SPACING.xxxsmall}}>
           <View
@@ -67,7 +69,7 @@ function Movies(props) {
                 width: wp('30%'),
                 lineHeight: Platform.OS == 'android' ? 15 : 0,
               }}
-              xxsmall
+              xsmall
               bold
               white>
               {item.title}
@@ -92,23 +94,7 @@ function Movies(props) {
   }
 
   if (isLoading) {
-    return (
-      <View
-        styles={{
-          // ...styles.loadingContainer,
-          // display: 'flex',
-          // flex: 1,
-          // alignItems: 'center',
-          // justifyContent: 'center',
-          height: 400,
-          borderColor: 'red',
-          borderWidth: 1,
-          borderStyle: 'solid',
-          backgroundColor: 'green',
-        }}>
-        <CustomText center>isLoading...</CustomText>
-      </View>
-    );
+    return <FullScreenLoader title={'Movies'} />;
   } else {
     return (
       <View style={{...styles.container}}>
@@ -126,21 +112,8 @@ function Movies(props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.black,
-    paddingTop: Platform.OS == 'ios' ? SPACING.small : SPACING.xxsmall,
+    paddingTop: Platform.OS == 'ios' ? 50 : 10,
     paddingBottom: SPACING.xxsmall,
-  },
-
-  cardConatiner: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: 'red',
-  },
-
-  helperContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
   },
 
   content: {
@@ -148,16 +121,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: SPACING.xxsmall,
-  },
-
-  loadingContainer: {
-    display: 'flex',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: 'red',
-    borderWidth: 1,
-    borderStyle: 'solid',
   },
 });
 

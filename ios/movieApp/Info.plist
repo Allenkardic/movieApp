@@ -35,6 +35,7 @@
 			</dict>
 		</dict>
 	</dict>
+	
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>UILaunchStoryboardName</key>
@@ -73,6 +74,9 @@
 	<key>NSAppTransportSecurity</key>  
     <dict>  
       <key>NSAllowsArbitraryLoads</key><true/>  
+	  <key>NSExceptionAllowsInsecureHTTPLoads</key>
+      <true/>
+
     </dict>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
