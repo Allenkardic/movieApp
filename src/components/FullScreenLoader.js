@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Platform, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 
+// COMPONENTS
 import {COLORS} from '../constants/theme';
 import CustomText from './CustomText';
 

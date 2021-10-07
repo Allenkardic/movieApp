@@ -197,25 +197,6 @@ export const BORDERRADIUS = {
 
 export const IMAGES = {
   avatar: require('../../assets/images/avatar.png'),
-  woman: require('../../assets/images/woman.png'),
-  cash: require('../../assets/images/cash.png'),
-  expired: require('../../assets/images/expired.png'),
-  headPhone: require('../../assets/images/headPhone.png'),
-  hotelCard: require('../../assets/images/hotelCard.png'),
-  power: require('../../assets/images/power.png'),
-  siren: require('../../assets/images/siren.png'),
-  tap: require('../../assets/images/tap.png'),
-  paystack: require('../../assets/images/paystack.png'),
-  flutterwave: require('../../assets/images/flutterwave.png'),
-  saveMoney: require('../../assets/images/saveMoney.png'),
-  // dashBoardCard: require('../../assets/images/airplaneCard.jpeg'),
-  // airplane: require('../../assets/images/airplaneCard.jpeg'),
-  // bottomStrip: require('../../assets/images/bottomstrip.png'),
-  // airtel: require('../../assets/images/airtel.png'),
-  // figure: require('../../assets/images/figure.png'),
-  // blue: require('../../assets/images/blueBackground.png'),
-  // productLogo: require('../../assets/images/TvestNameLogo.png'),
-  // productLogoTwo: require('../../assets/images/TvestLogo.png'),
 };
 
 export default {

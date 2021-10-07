@@ -1,5 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, Platform, FlatList} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+// REDUX
+import {useDispatch, useSelector} from 'react-redux';
+import {getMoviesRequest} from '../../store/actions/get_movies';
 
 // COMPONENTS
 import CustomText from '../../components/CustomText';
@@ -7,15 +15,6 @@ import {SPACING, COLORS} from '../../constants/theme';
 
 import MovieCard from '../../components/MovieCard';
 import FullScreenLoader from '../../components/FullScreenLoader';
-
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-
-import {useDispatch, useSelector} from 'react-redux';
-
-import {getMoviesRequest} from '../../store/actions/get_movies';
 function Movies(props) {
   const dispatch = useDispatch();
   //REDUX STATES

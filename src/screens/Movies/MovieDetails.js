@@ -8,31 +8,23 @@ import {
   Platform,
 } from 'react-native';
 
-// COMPONENTS
-import CustomText from '../../components/CustomText';
-import {
-  FONTSIZE,
-  SPACING,
-  SIZES,
-  IMAGES,
-  COLORS,
-  BORDERRADIUS,
-} from '../../constants/theme';
+import {useDispatch, useSelector} from 'react-redux';
 
+import Icon from 'react-native-vector-icons/Feather';
+import {Rating, AirbnbRating} from 'react-native-ratings';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-import MovieCard from '../../components/MovieCard';
-
-import {useDispatch, useSelector} from 'react-redux';
-
-import Icon from 'react-native-vector-icons/Feather';
-import {Rating, AirbnbRating} from 'react-native-ratings';
-
+// REDUX
 import {getMovieDetailRequest} from '../../store/actions/get_movies_id';
 import {rateMovieRequest} from '../../store/actions/rate_movie';
+
+// COMPONENTS
+import CustomText from '../../components/CustomText';
+import {SPACING, COLORS} from '../../constants/theme';
+import MovieCard from '../../components/MovieCard';
 import FullScreenLoader from '../../components/FullScreenLoader';
 
 function MovieDetails(props) {
@@ -52,12 +44,6 @@ function MovieDetails(props) {
   React.useEffect(() => {
     dispatch(getMovieDetailRequest(id));
   }, []);
-
-  // MOVIE TITLE
-  // YEAR OF RELEASSE
-  // OVERVIEW
-  // THE GENRES
-  // POSTER
 
   const {
     original_title,
@@ -154,7 +140,6 @@ function MovieDetails(props) {
                 </View>
               </MovieCard>
             </View>
-            <Icon name="play" size={20} color={'white'} />
           </View>
         </ScrollView>
       </>
@@ -165,13 +150,12 @@ function MovieDetails(props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.black,
-    paddingTop: SPACING.large,
+    paddingTop: SPACING.xxsmall,
   },
 
   cardConatiner: {
     width: '100%',
     marginBottom: SPACING.xxsmall,
-    backgroundColor: COLORS.darkGray,
   },
 
   overViewText: {

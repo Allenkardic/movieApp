@@ -1,3 +1,4 @@
+import {Alert} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {COLORS} from '../../../constants/theme';
 
@@ -51,11 +52,8 @@ export const rateMovieRequest = payload => {
             const result = response.data;
             // HANDLE SUCCESS
             dispatch(rateMovieSuccess(result));
-            showMessage({
-              message: 'Rating submitted successfuly',
-              type: 'success',
-              color: COLORS.white, // text color
-            });
+
+            Alert.alert('Rating submitted successfuly');
           })
           .catch(function (error) {
             showMessage({

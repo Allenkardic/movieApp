@@ -8,23 +8,13 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-// COMPONENTS
-
-import {
-  FONTSIZE,
-  SPACING,
-  SIZES,
-  IMAGES,
-  COLORS,
-  BORDERRADIUS,
-} from '../constants/theme';
-
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-const {screenWidth, screenHeight} = SIZES;
+// COMPONENTS
+import {SPACING, COLORS, BORDERRADIUS} from '../constants/theme';
 
 function MovieCard({
   onPress,
